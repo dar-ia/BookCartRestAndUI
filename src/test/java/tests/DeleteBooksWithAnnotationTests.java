@@ -35,7 +35,7 @@ public class DeleteBooksWithAnnotationTests extends TestBase{
                     .spec(noCreateResponseSuccess)
                     .extract().as(UserModel.class);
         });
-        step("Ensure that cart is empty", () -> {
+        step("Ensure that cart is empty in API", () -> {
             Assertions.assertEquals(0, userBefore.getBooks().length);
         });
         cartPage.openBrowserOnTheCart()

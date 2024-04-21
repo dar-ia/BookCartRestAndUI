@@ -26,6 +26,11 @@ public class CartPage {
         open("/profile");
         return this;
     }
+    @Step("Open browser to add cookies")
+    public CartPage openBrowserOnDummyPage() {
+        open("/images/Toolsqa.jpg");
+        return this;
+    }
     @Step("Assert that login is successful")
     public CartPage assertSuccessLogin(String userNameActual){
         userName.shouldHave(Condition.text(userNameActual));

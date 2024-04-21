@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.Extension;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
 import org.openqa.selenium.Cookie;
+import pages.CartPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
@@ -27,6 +28,8 @@ public class LoginExtension implements BeforeEachCallback {
 
         if(annotation!=null){
             LoginResponseModel authorizationResponse = authorizeRequest();
+            CartPage page = new CartPage();
+            page.openBrowserOnDummyPage();
             open("/images/Toolsqa.jpg");
             getWebDriver().manage().addCookie(new Cookie("token", authorizationResponse.getToken()));
             getWebDriver().manage().addCookie(new Cookie("expires", authorizationResponse.getExpires()));
