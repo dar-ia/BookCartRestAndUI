@@ -26,7 +26,6 @@ public class LoginExtension implements BeforeEachCallback {
             LoginResponseModel authorizationResponse = authorizeRequest();
             CartPage page = new CartPage();
             page.openBrowserOnDummyPage();
-            open("/images/Toolsqa.jpg");
             getWebDriver().manage().addCookie(new Cookie("token", authorizationResponse.getToken()));
             getWebDriver().manage().addCookie(new Cookie("expires", authorizationResponse.getExpires()));
             getWebDriver().manage().addCookie(new Cookie("userName", authorizationResponse.getUsername()));
