@@ -4,6 +4,7 @@ import helpers.WithLogin;
 import models.accountModels.UserModel;
 import models.bookStoreModels.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.CartPage;
 
@@ -12,10 +13,11 @@ import static io.restassured.RestAssured.given;
 import static models.accountModels.LoginRequestModel.authorizeRequest;
 import static specs.Specifications.*;
 import static specs.Specifications.noCreateResponseSuccess;
-
+@DisplayName("Tests on books removing from the cart")
 public class DeleteBooksWithAnnotationTests extends TestBase {
     @Test
     @WithLogin
+    @DisplayName("Positive test on books removing from the cart")
     void deleteAllBooksFromTheCartTest() {
         CartPage cartPage = new CartPage();
         step("Clear the cart", () -> {
