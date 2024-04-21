@@ -7,6 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static models.accountModels.LoginRequestModel.authorizeRequest;
 
@@ -15,6 +16,7 @@ public class Specifications {
     public static RequestSpecification sendSimpleRequest = with()
             .contentType(ContentType.JSON);
     public static RequestSpecification sendRequestWithBodySpec = new RequestSpecBuilder()
+            .addFilter(withCustomTemplates())
             .setContentType(ContentType.JSON)
             .addHeader("Authorization", "Bearer "+authorizeRequest().getToken())
             .log(LogDetail.METHOD)
@@ -23,6 +25,7 @@ public class Specifications {
             .build();
 
     public static RequestSpecification sendRequestWithoutBodySpec = new RequestSpecBuilder()
+            .addFilter(withCustomTemplates())
             .addHeader("Authorization", "Bearer "+authorizeRequest().getToken())
             .log(LogDetail.METHOD)
             .log(LogDetail.URI)

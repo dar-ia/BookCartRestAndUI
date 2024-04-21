@@ -1,8 +1,6 @@
 package tests;
 
 import helpers.WithLogin;
-import models.accountModels.LoginRequestModel;
-import models.accountModels.LoginResponseModel;
 import models.accountModels.UserModel;
 import models.bookStoreModels.*;
 import org.junit.jupiter.api.Assertions;
@@ -15,7 +13,7 @@ import static models.accountModels.LoginRequestModel.authorizeRequest;
 import static specs.Specifications.*;
 import static specs.Specifications.noCreateResponseSuccess;
 
-public class DeleteBooksWithAnnotation extends TestBase{
+public class DeleteBooksWithAnnotationTests extends TestBase{
     @Test
     @WithLogin
     void deleteAllBooksFromTheCartTest() {

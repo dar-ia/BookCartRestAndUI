@@ -13,10 +13,9 @@ public class TestBase {
         RestAssured.baseURI = "https://demoqa.com";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy="eager";
-        Configuration.holdBrowserOpen=true;
     }
-//    @AfterEach
-//    void afterEachAction(){
-//        closeWebDriver();
-//    }
+    @AfterEach
+    void afterEachAction(){
+        closeWebDriver();
+    }
 }
