@@ -2,7 +2,6 @@ package models.accountModels;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import tests.TestBase;
-
 import static io.restassured.RestAssured.given;
 import static specs.Specifications.*;
 

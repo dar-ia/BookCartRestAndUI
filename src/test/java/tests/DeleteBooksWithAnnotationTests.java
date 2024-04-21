@@ -13,13 +13,11 @@ import static models.accountModels.LoginRequestModel.authorizeRequest;
 import static specs.Specifications.*;
 import static specs.Specifications.noCreateResponseSuccess;
 
-public class DeleteBooksWithAnnotationTests extends TestBase{
+public class DeleteBooksWithAnnotationTests extends TestBase {
     @Test
     @WithLogin
     void deleteAllBooksFromTheCartTest() {
         CartPage cartPage = new CartPage();
-
-
         step("Clear the cart", () -> {
             given(sendRequestWithoutBodySpec)
                     .when()
@@ -85,7 +83,6 @@ public class DeleteBooksWithAnnotationTests extends TestBase{
             deleteBookRequest.setUserId(authorizeRequest().getUserId());
             for (IsbnModel book : addBooksResponse.getBooks()) {
                 deleteBookRequest.setIsbn(book.getIsbn());
-
                 given(sendRequestWithBodySpec)
                         .body(deleteBookRequest)
                         .log().all()
@@ -106,9 +103,7 @@ public class DeleteBooksWithAnnotationTests extends TestBase{
         step("Ensure that cart is not empty", () -> {
             Assertions.assertEquals(0, userIsCleared.getBooks().length);
         });
-
         cartPage.openBrowserOnTheCart()
                 .assertThatCartIsEmpty();
-
     }
 }

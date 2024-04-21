@@ -18,7 +18,7 @@ public class TestBase {
     static void commonConfig() {
         RestAssured.baseURI = "https://demoqa.com";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy="eager";
+        Configuration.pageLoadStrategy = "eager";
         Configuration.remote = "https://user1:1234@" + System.getProperty("remote", "selenoid.autotests.cloud") + "/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -28,8 +28,9 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
+
     @AfterEach
-    void afterEachAction(){
+    void afterEachAction() {
         Attachments.screenshotAs("Last screen");
         Attachments.pageSource();
         Attachments.browserConsoleLogs();

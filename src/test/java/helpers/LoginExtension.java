@@ -1,10 +1,7 @@
 package helpers;
 
-import models.accountModels.LoginRequestModel;
 import models.accountModels.LoginResponseModel;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
-import org.junit.jupiter.api.extension.Extension;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
 import org.openqa.selenium.Cookie;
@@ -21,12 +18,11 @@ public class LoginExtension implements BeforeEachCallback {
         WithLogin annotation = AnnotationSupport.findAnnotation(context.getRequiredTestMethod(),
                 WithLogin.class
         ).orElse(AnnotationSupport.findAnnotation(
-                context.getRequiredTestClass(),
-                WithLogin.class
-        ).orElse(null)
+                        context.getRequiredTestClass(),
+                        WithLogin.class
+                ).orElse(null)
         );
-
-        if(annotation!=null){
+        if (annotation != null) {
             LoginResponseModel authorizationResponse = authorizeRequest();
             CartPage page = new CartPage();
             page.openBrowserOnDummyPage();

@@ -18,7 +18,7 @@ public class Specifications {
     public static RequestSpecification sendRequestWithBodySpec = new RequestSpecBuilder()
             .addFilter(withCustomTemplates())
             .setContentType(ContentType.JSON)
-            .addHeader("Authorization", "Bearer "+authorizeRequest().getToken())
+            .addHeader("Authorization", "Bearer " + authorizeRequest().getToken())
             .log(LogDetail.METHOD)
             .log(LogDetail.URI)
             .log(LogDetail.BODY)
@@ -26,7 +26,7 @@ public class Specifications {
 
     public static RequestSpecification sendRequestWithoutBodySpec = new RequestSpecBuilder()
             .addFilter(withCustomTemplates())
-            .addHeader("Authorization", "Bearer "+authorizeRequest().getToken())
+            .addHeader("Authorization", "Bearer " + authorizeRequest().getToken())
             .log(LogDetail.METHOD)
             .log(LogDetail.URI)
             .build();
@@ -46,5 +46,4 @@ public class Specifications {
             .log(LogDetail.STATUS)
             .log(LogDetail.BODY)
             .build();
-
 }
