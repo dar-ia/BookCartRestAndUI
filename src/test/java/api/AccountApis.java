@@ -1,5 +1,6 @@
 package api;
 
+import io.qameta.allure.Step;
 import models.accountmodels.UserModel;
 
 import static api.AuthApi.authorizeRequest;
@@ -8,6 +9,7 @@ import static specs.Specifications.noCreate200ResponseSuccess;
 import static specs.Specifications.sendRequestWithoutBodySpec;
 
 public class AccountApis  {
+    @Step("Get user info")
     public UserModel getUserInfo(){
         return given(sendRequestWithoutBodySpec)
                 .when()

@@ -1,16 +1,14 @@
 package api;
 
-import models.bookstoremodels.AddBooksRequestModel;
-import models.bookstoremodels.AddBooksResponse;
-import models.bookstoremodels.IsbnModel;
-import models.bookstoremodels.ListBooksResponseModel;
+import io.qameta.allure.Step;
+import models.bookstoremodels.*;
 
 import static api.AuthApi.authorizeRequest;
-import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static specs.Specifications.*;
 
 public class BookStoreApis {
+    @Step("Delete all books from the cart")
     public void deleteAllBooks(String userId){
         given(sendRequestWithoutBodySpec)
                 .queryParams("UserId", userId)
@@ -19,15 +17,17 @@ public class BookStoreApis {
                 .then()
                 .spec(delete204ResponseSuccessSpec);
     }
-    public ListBooksResponseModel listOfBooks(){
+    @Step("List all books in the catalog")
+    public AllBooksModel listOfBooks(){
         return given(sendRequestWithoutBodySpec)
                 .when()
                 .get("/BookStore/v1/Books")
                 .then()
                 .spec(noCreate200ResponseSuccess)
-                .extract().as(ListBooksResponseModel.class);
+                .extract().as(AllBooksModel.class);
     }
-    public AddBooksResponse addBooks() {
+    @Step("Add books to the cart")
+    public void addBooks() {
         AddBooksRequestModel addBooksRequest = new AddBooksRequestModel();
         addBooksRequest.setUserId(authorizeRequest().getUserId());
         IsbnModel book1 = new IsbnModel();
@@ -35,7 +35,7 @@ public class BookStoreApis {
         book1.setIsbn(listOfBooks().getBooks()[0].getIsbn());
         book2.setIsbn(listOfBooks().getBooks()[2].getIsbn());
         addBooksRequest.setCollectionOfIsbns(new IsbnModel[]{book1, book2});
-        return given(sendRequestWithBodySpec)
+        given(sendRequestWithBodySpec)
                 .body(addBooksRequest)
                 .when()
                 .post("/BookStore/v1/Books")
