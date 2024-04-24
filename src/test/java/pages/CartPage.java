@@ -5,8 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import helpers.Attachments;
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CartPage {
     SelenideElement userName = $("#userName-value"),
@@ -28,6 +27,11 @@ public class CartPage {
     public CartPage assertSuccessLogin(String userNameActual) {
         userName.shouldHave(Condition.text(userNameActual));
         Attachments.screenshotAs("Profile is opened");
+        return this;
+    }
+    @Step("Refresh page")
+    public CartPage refreshPage(){
+        refresh();
         return this;
     }
 
