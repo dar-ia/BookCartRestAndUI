@@ -12,7 +12,7 @@ public class CartPage {
     SelenideElement userName = $("#userName-value"),
             noDataInCart = $(".rt-noData");
 
-    @Step("Open browser")
+    @Step("Open browser on profile")
     public CartPage openBrowserOnTheCart() {
         open("/profile");
         return this;
@@ -31,7 +31,7 @@ public class CartPage {
         return this;
     }
 
-    @Step("Assert that cart is empty")
+    @Step("Assert that cart is empty in UI")
     public CartPage assertThatCartIsEmpty() {
         noDataInCart.shouldHave(Condition.text("No rows found"));
         noDataInCart.shouldBe(Condition.visible);
@@ -39,7 +39,7 @@ public class CartPage {
         return this;
     }
 
-    @Step("Assert that cart is not empty")
+    @Step("Assert that cart is not empty in UI")
     public CartPage assertThatCartIsNotEmpty() {
         noDataInCart.shouldNotBe(Condition.visible);
         Attachments.screenshotAs("Cart is not empty");

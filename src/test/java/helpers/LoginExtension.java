@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
 import org.openqa.selenium.Cookie;
 import pages.CartPage;
-
 import static api.AuthApi.authorizeRequest;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 

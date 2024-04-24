@@ -4,7 +4,6 @@ import lombok.EqualsAndHashCode;
 import models.accountmodels.LoginRequestModel;
 import models.accountmodels.LoginResponseModel;
 import tests.TestBase;
-
 import static io.restassured.RestAssured.given;
 import static specs.Specifications.sendSimpleRequest;
 

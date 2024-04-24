@@ -3,6 +3,6 @@ package models.bookstoremodels;
 import lombok.Data;
 
 @Data
-public class    IsbnModel {
+public class IsbnModel {
     String isbn;
 }

@@ -1,5 +1,4 @@
 package models.accountmodels;
-
 import lombok.Data;
 
 @Data

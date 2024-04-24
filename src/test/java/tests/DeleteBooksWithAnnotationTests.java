@@ -4,7 +4,6 @@ import api.AccountApis;
 import api.BookStoreApis;
 import helpers.WithLogin;
 import models.accountmodels.UserModel;
-import models.bookstoremodels.*;
 import org.junit.jupiter.api.*;
 import pages.CartPage;
 
@@ -24,14 +23,15 @@ public class DeleteBooksWithAnnotationTests extends TestBase {
         bookStoreApis.deleteAllBooks(authorizeRequest().getUserId());
         bookStoreApis.addBooks();
         UserModel userWithBooks = accountApis.getUserInfo();
-        step("Ensure that cart is not empty", () -> {
+        step("Assert that cart is not empty in API", () -> {
             Assertions.assertEquals(2, userWithBooks.getBooks().length);
         });
         cartPage.openBrowserOnTheCart()
+                .assertSuccessLogin(authorizeRequest().getUsername())
                 .assertThatCartIsNotEmpty();
         bookStoreApis.deleteAllBooks(authorizeRequest().getUserId());
         UserModel userIsCleared = accountApis.getUserInfo();
-        step("Ensure that cart is not empty", () -> {
+        step("Assert that cart is not empty in API", () -> {
             Assertions.assertEquals(0, userIsCleared.getBooks().length);
         });
         cartPage.openBrowserOnTheCart()
