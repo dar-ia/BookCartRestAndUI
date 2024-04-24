@@ -1,5 +1,6 @@
-package models.bookStoreModels;
+package models.bookstoremodels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -8,9 +9,10 @@ public class BookResponseModel {
             title,
             subTitle,
             author,
-            publish_date,
             publisher,
             pages,
             description,
             website;
+    @JsonProperty("publish_date")
+    String publishDate;
 }

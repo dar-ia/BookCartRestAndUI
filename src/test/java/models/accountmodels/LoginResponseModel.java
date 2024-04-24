@@ -1,5 +1,6 @@
-package models.accountModels;
+package models.accountmodels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -9,6 +10,7 @@ public class LoginResponseModel {
             password,
             token,
             expires,
-            created_date,
             isActive;
+    @JsonProperty("created_date")
+    String createdDate;
 }

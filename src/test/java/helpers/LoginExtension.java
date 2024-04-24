@@ -1,15 +1,14 @@
 package helpers;
 
-import models.accountModels.LoginResponseModel;
+import models.accountmodels.LoginResponseModel;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.platform.commons.support.AnnotationSupport;
 import org.openqa.selenium.Cookie;
 import pages.CartPage;
 
-import static com.codeborne.selenide.Selenide.open;
+import static api.AuthApi.authorizeRequest;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static models.accountModels.LoginRequestModel.authorizeRequest;
 
 public class LoginExtension implements BeforeEachCallback {
 

@@ -1,4 +1,4 @@
-package models.bookStoreModels;
+package models.bookstoremodels;
 
 import lombok.Data;
 

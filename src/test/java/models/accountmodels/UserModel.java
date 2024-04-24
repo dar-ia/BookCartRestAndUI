@@ -1,7 +1,7 @@
-package models.accountModels;
+package models.accountmodels;
 
 import lombok.Data;
-import models.bookStoreModels.BookResponseModel;
+import models.bookstoremodels.BookResponseModel;
 
 @Data
 public class UserModel {

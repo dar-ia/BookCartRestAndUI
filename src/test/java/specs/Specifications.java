@@ -7,9 +7,9 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+import static api.AuthApi.authorizeRequest;
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
-import static models.accountModels.LoginRequestModel.authorizeRequest;
 
 public class Specifications {
 
@@ -31,17 +31,17 @@ public class Specifications {
             .log(LogDetail.URI)
             .build();
 
-    public static ResponseSpecification deleteResponseSuccessSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification delete204ResponseSuccessSpec = new ResponseSpecBuilder()
             .expectStatusCode(204)
             .log(LogDetail.STATUS)
             .build();
-    public static ResponseSpecification createResponseSuccess = new ResponseSpecBuilder()
+    public static ResponseSpecification create201ResponseSuccess = new ResponseSpecBuilder()
             .expectStatusCode(201)
             .log(LogDetail.STATUS)
             .log(LogDetail.BODY)
             .build();
 
-    public static ResponseSpecification noCreateResponseSuccess = new ResponseSpecBuilder()
+    public static ResponseSpecification noCreate200ResponseSuccess = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(LogDetail.STATUS)
             .log(LogDetail.BODY)
