@@ -21,8 +21,8 @@ public class DeleteBooksWithAnnotationTests extends TestBase {
         cartPage.openBrowserOnTheCart()
                 .assertSuccessLogin(authorizeRequest().getUsername())
                 .assertThatCartIsNotEmpty();
-        bookStoreApis.deleteAllBooks(authorizeRequest().getUserId());
-        cartPage.refreshPage()
+        cartPage.deleteAllBooks()
+                .confirmDelete()
                 .assertThatCartIsEmpty();
     }
 }
